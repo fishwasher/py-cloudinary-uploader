@@ -6,20 +6,20 @@ import re
 #from glob import glob
 from os import listdir
 from os.path import isfile, isdir, join, splitext, basename
-
 #import codecs
 
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-#r'C:\srv\htdocs\projects\hosted-at-gd\assets\jk\photos\pics'
-CONFIG_PATH = r'L:\Documents\Data\_cloudinary.json'
+
+#CONFIG_PATH = r'L:\Documents\Data\_cloudinary.json'
+CONFIG_PATH = r'_cloudinary.json'
 
 #EXTENSIONS = ['.jpg', '.jpeg', '.gif', '.png']
 EXTENSIONS = ['.jpg', '.gif', '.png']
 
-DATA_FILE_NAME = 'upload-data.txt'
+DATA_FILE_NAME = '_upload-data.txt'
 
 MAX_WIDTH = None
 
@@ -128,7 +128,8 @@ def upload_dir():
         except:
             print "Could not convert result to JSON!"
         print result_str
-        with open(DATA_FILE_NAME, 'a') as f:
+        data_file_path = join(dir_path, DATA_FILE_NAME)
+        with open(data_file_path, 'a') as f:
             f.write(result_str + '\n')
 
 upload_dir()
